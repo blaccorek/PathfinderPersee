@@ -1,6 +1,5 @@
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -11,12 +10,12 @@ import java.util.List;
 
 public class GPS {
 	/**
-	 * Position projetée actuelle
+	 * Position projetï¿½e actuelle
 	 */
 	private Point	CurrentPosition;
 	
 	/**
-	 * Liste des prochains points à parcourir
+	 * Liste des prochains points ï¿½ parcourir
 	 */
 	private List<Point>	OpenList;
 	
@@ -26,8 +25,8 @@ public class GPS {
 	private List<Point>	ClosedList;
 	
 	/**
-	 * Représente le labyrinthe
-	 * 	Caractéristiques :
+	 * Reprï¿½sente le labyrinthe
+	 * 	Caractï¿½ristiques :
 	 * <ul>
 	 *	<li>true  -> mur</li>
 	 * 	<li>false -> chemin</li>
@@ -39,7 +38,7 @@ public class GPS {
 	 * Constructeur
 	 */
 	public GPS() {
-		this.OpenList = new LinkedList<Point>();
+		this.OpenList = new ArrayList<Point>();
 		this.ClosedList = new ArrayList<Point>();
 	}
 	
@@ -54,7 +53,7 @@ public class GPS {
 	}
 	
 	/**
-	 * Retourne la case située à <b>direction</b> par rapport à la position actuelle.<br>
+	 * Retourne la case situï¿½e ï¿½ <b>direction</b> par rapport ï¿½ la position actuelle.<br>
 	 * Les valeurs de <b>direction</b> sont :
 	 * <ul>
 	 * <li>0 -> droite</li>
@@ -81,7 +80,7 @@ public class GPS {
 		Point nPoint = new Point(CurrentPosition.x + deltaX, CurrentPosition.y + deltaY);
 		if ( nPoint.y >= 0 && nPoint.y < Maze.length
 				&& nPoint.x >= 0 && nPoint.x < Maze.length) {
-			// Recherche si le nouveau Point n'a pas déjà été répertorié dans la liste des Points à Parcourir
+			// Recherche si le nouveau Point n'a pas dï¿½jï¿½ ï¿½tï¿½ rï¿½pertoriï¿½ dans la liste des Points ï¿½ Parcourir
 			for(Iterator<Point> i = OpenList.iterator(); i.hasNext();) {
 				Point tmp = i.next();
 				if (tmp.equals(nPoint)){
@@ -90,7 +89,7 @@ public class GPS {
 				}
 			}
 			// --f
-			// Recherche si le nouveau Point n'a pas déjà été vérifié
+			// Recherche si le nouveau Point n'a pas dï¿½jï¿½ ï¿½tï¿½ vï¿½rifiï¿½
 			for(Iterator<Point> i = ClosedList.iterator(); i.hasNext();) {
 				Point tmp = i.next();
 				if (tmp.equals(nPoint)){
@@ -111,7 +110,7 @@ public class GPS {
 	 * <br>
 	 * Soit N la taille du labyrinthe.<br>
 	 * Position de la sortie : [0][N -1]<br>
-	 * Position de départ : [N -1][0]
+	 * Position de dï¿½part : [N -1][0]
 	 * 
 	 * @param labyrinthe
 	 * 
