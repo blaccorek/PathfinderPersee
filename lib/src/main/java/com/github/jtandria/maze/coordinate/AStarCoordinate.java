@@ -1,29 +1,30 @@
 package com.github.jtandria.maze.coordinate;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
-@Setter
-public class AStarCoordinate extends Coordinate {
+@Getter @Setter
+public class AStarCoordinate extends ChildCoordinate {
 
+  @JsonIgnore
   private int distanceFromLastStar;
 
+  @JsonIgnore
   private int distanceFromGoal;
-
-  private AStarCoordinate parent;
 
   public AStarCoordinate(int x, int y) {
     super(x, y);
     this.distanceFromLastStar = 0;
     this.distanceFromGoal = 0;
-    this.parent = null;
   }
 
   public AStarCoordinate(Coordinate coordinate) {
     this(coordinate.getX(), coordinate.getY());
   }
 
+  @JsonIgnore
   public int getHeuristic() {
     return distanceFromLastStar + distanceFromGoal;
   }
